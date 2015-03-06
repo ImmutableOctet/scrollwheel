@@ -42,9 +42,12 @@ namespace external_scrollwheel
 	// Typedefs:
 	
 	// Just for the sake of maximum compatibility:
+	
+	/*
 	#if EXTERNAL_SCROLLWHEEL_SINGLE_WINDOW_SAFE && (GLFW_VERSION < 3)
 		typedef void GLFWwindow;
 	#endif
+	*/
 	
 	#ifdef EXTERNAL_SCROLLWHEEL_MULTI_WINDOW
 		typedef map<GLFWwindow*, scrollInfo> scrollWheelMap;
@@ -133,7 +136,9 @@ namespace external_scrollwheel
 		#endif
 		
 		#if CFG_GLFW_VERSION >= 3
-			glfwSetScrollCallback(window, scrollwheelCallback);
+			glfwSetScrollCallback(window, &scrollwheelCallback);
+		#else
+			// Support for previous versions of GLFW is not currently available.
 		#endif
 		
 		#if defined(EXTERNAL_SCROLLWHEEL_SINGLE_WINDOW) // !defined(EXTERNAL_SCROLLWHEEL_MULTI_WINDOW)

@@ -24,7 +24,7 @@ End
 Class Application Extends App Final
 	' Methods:
 	Method OnCreate:Int()
-		SetUpdateRate(30) ' 60
+		SetUpdateRate(30) ' 60 ' 0
 		
 		Wheel = GetScrollWheel()
 		
